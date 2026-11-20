@@ -72,3 +72,13 @@ img,svg{max-width:100%}main,section,.wrap,.hero-copy,.hero-art,.creators>div,.an
  body>footer{padding:30px 20px;margin-bottom:8px}footer p{font-size:13px}footer>div:last-child{gap:16px;font-size:13px}footer>div:last-child span{font-size:11px}.back-top{right:14px;bottom:14px;width:43px;height:43px}#install-dialog{width:calc(100% - 24px);max-height:88svh;padding:21px}#install-dialog h2{font-size:25px}.install-method p,.install-method li{font-size:14px}.install-header .eyebrow{font-size:9px}
 }
 @media(max-width:360px){.wrap{padding-inline:16px}.hero{padding-inline:16px}.hero-art{height:260px}.study-scene{transform:scale(.61)}body>header{padding-inline:12px;gap:8px}body>header .brand{font-size:17px}body>header .ai{font-size:17px}.hero h1{font-size:29px}.phone-scene:has(.phone-real){min-height:490px}.creator h3{font-size:17px}.tabs button{font-size:12px}}
+
+/* O menu fica acima da página e recebe os toques, inclusive durante a entrada. */
+body>header{position:relative;z-index:100;isolation:isolate}
+body>main{position:relative;z-index:0}
+@media(max-width:950px){
+ body>header{animation:none;transform:none;overflow:visible}
+ body>header>.menu,body>header>.theme-toggle{position:relative;z-index:2;pointer-events:auto}
+ body>header>nav.open{z-index:101;pointer-events:auto;max-height:calc(100dvh - 100px);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+ body>header>nav.open a{display:flex;align-items:center;min-height:48px;pointer-events:auto}
+}
