@@ -1,1 +1,8 @@
+.env
+.env.*
+!.env.example
+node_modules/
+.openai/
 .source-sync.py
+*.log
+.DS_Store
