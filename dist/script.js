@@ -52,3 +52,14 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',even
 const directoryCards=document.querySelectorAll('.directory-grid>a');
 if('IntersectionObserver' in window){const cardsObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('card-visible');cardsObserver.unobserve(entry.target)}}),{threshold:.12});directoryCards.forEach((card,index)=>{card.style.setProperty('--card-delay',`${index*75}ms`);cardsObserver.observe(card)})}
 document.querySelectorAll('.button,.tabs button').forEach(button=>button.addEventListener('pointerdown',event=>{if(motionPreference.matches)return;const rect=button.getBoundingClientRect(),ripple=document.createElement('span');ripple.className='interaction-ripple';ripple.setAttribute('aria-hidden','true');ripple.style.left=`${event.clientX-rect.left}px`;ripple.style.top=`${event.clientY-rect.top}px`;button.append(ripple);ripple.addEventListener('animationend',()=>ripple.remove(),{once:true})}));
+
+// APK original gerado pelo workflow Android do projeto principal.
+const apkSection=installDialog.querySelector('.apk-option');
+if(apkSection){
+ const heading=document.createElement('h3');heading.textContent='Aplicativo para Android';
+ const description=document.createElement('p');description.textContent='Baixe o APK do StudyMind e abra o arquivo no celular para instalar. Compatível com Android 8 ou superior.';
+ const download=document.createElement('a');download.className='button';download.href='studymind-android.apk';download.download='StudyMind-Android.apk';download.textContent='Baixar APK Android';
+ const note=document.createElement('small');note.textContent='Versão de desenvolvimento gerada pelo GitHub Actions. Se o Android solicitar, permita a instalação por este navegador. O aplicativo acessa studyminds.vercel.app e precisa de internet.';
+ apkSection.replaceChildren(heading,description,download,note);
+ installDialog.querySelector(':scope > p').after(apkSection);
+}
